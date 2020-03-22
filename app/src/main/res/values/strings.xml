@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">ArCoreSample</string>
+    <string name="home">arCamera</string>
+    <string name="library">library</string>
+</resources>

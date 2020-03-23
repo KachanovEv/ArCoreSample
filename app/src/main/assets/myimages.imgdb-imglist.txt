@@ -1,0 +1,8 @@
+blue_car.png|E:\ArCoreSample\app\src\main\assets\img/blue_car.png
+default.jpg|E:\ArCoreSample\app\src\main\assets\img/default.jpg
+frame.png|E:\ArCoreSample\app\src\main\assets\img/frame.png
+imageone.jpeg|E:\ArCoreSample\app\src\main\assets\img/imageone.jpeg
+photo.jpg|E:\ArCoreSample\app\src\main\assets\img/photo.jpg
+phototwo.jpg|E:\ArCoreSample\app\src\main\assets\img/phototwo.jpg
+red_car.png|E:\ArCoreSample\app\src\main\assets\img/red_car.png
+truck.png|E:\ArCoreSample\app\src\main\assets\img/truck.png

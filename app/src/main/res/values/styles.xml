@@ -4,9 +4,9 @@
     <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/white</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
-
     <style name="TitleTextViewStyle" parent="Widget.AppCompat.TextView">
         <item name="fontFamily">sans-serif-light</item>
     </style>

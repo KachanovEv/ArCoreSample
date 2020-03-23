@@ -11,7 +11,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.ar_core_sample"
-        minSdkVersion 27
+        minSdkVersion 28
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"

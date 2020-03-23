@@ -28,9 +28,7 @@ class LibraryAdapter :
         holder.itemView.ivContent.setImageBitmap(libraryImageList[position].image)
     }
 
-    inner class LibraryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
-    }
+    inner class LibraryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {}
 
     fun setImageData(imageList: ArrayList<ImageModel>) {
         libraryImageList.clear()

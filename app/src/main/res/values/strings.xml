@@ -6,4 +6,5 @@
     <string name="get_started">Get Started!</string>
     <string name="welcome">WELCOME</string>
     <string name="arcore_is_google_s_platform_for_building_augmented_reality_experiences_using_different_apis_arcore_enables_your_phone_to_sense_its_environment_understand_the_world_and_interact_with_information_some_of_the_apis_are_available_across_android_and_ios_to_enable_shared_ar_experiences">ARCore is Google’s platform for building augmented reality experiences. Using different APIs, ARCore enables your phone to sense its environment, understand the world and interact with information. Some of the APIs are available across Android and iOS to enable shared AR experiences.</string>
+    <string name="add_image">Add Image</string>
 </resources>

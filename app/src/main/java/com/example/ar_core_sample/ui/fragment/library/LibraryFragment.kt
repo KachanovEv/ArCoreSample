@@ -11,22 +11,28 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.ar_core_sample.R
+import com.example.ar_core_sample.data.db.ArCoreDataBase
 import com.example.ar_core_sample.data.model.ImageModel
 import com.example.ar_core_sample.ui.adapter.LibraryAdapter
 import kotlinx.android.synthetic.main.fragment_library.*
+import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class LibraryFragment : Fragment() {
 
     private val gridLibraryAdapter = LibraryAdapter()
+    private val libraryViewModel: LibraryViewModel by viewModel()
+    private val arCoreDataBase: ArCoreDataBase by inject()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
+        libraryViewModel.getAllImagesUri(arCoreDataBase)
         return inflater.inflate(R.layout.fragment_library, container, false)
     }
 
@@ -36,6 +42,22 @@ class LibraryFragment : Fragment() {
         btnAddImage.setOnClickListener {
             pickFromGallery()
         }
+        libraryViewModel.imageUriLiveData.observe(viewLifecycleOwner, Observer { result ->
+            if (result.isNotEmpty()) {
+                val imageList = ArrayList<ImageModel>()
+                imageList.addAll(getListImagesFromAssets())
+                for (item in result) {
+                    val uri = Uri.parse(item.fileUri)
+                    val source =
+                        ImageDecoder.createSource(context?.contentResolver!!, uri)
+                    val bitmap = ImageDecoder.decodeBitmap(source)
+                    imageList.add(imageList.size - 1, ImageModel(bitmap))
+                }
+                gridLibraryAdapter.setImageData(imageList)
+            } else {
+                gridLibraryAdapter.setImageData(getListImagesFromAssets())
+            }
+        })
     }
 
     private fun pickFromGallery() {
@@ -67,6 +89,7 @@ class LibraryFragment : Fragment() {
                 getListImagesFromAssets().size - 1,
                 ImageModel(bitmap)
             )
+            libraryViewModel.insertHydrationHistory(arCoreDataBase, fileUri.toString())
             gridLibraryAdapter.setImageData(imageList)
         } else {
             super.onActivityResult(requestCode, resultCode, data)
@@ -79,7 +102,6 @@ class LibraryFragment : Fragment() {
         rv_library.setHasFixedSize(true)
         rv_library.layoutManager = horizontalManager
         rv_library.adapter = gridLibraryAdapter
-
         gridLibraryAdapter.setImageData(getListImagesFromAssets())
     }
 
